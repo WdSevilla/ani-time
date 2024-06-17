@@ -1,0 +1,57 @@
+---
+import { Image } from "astro:assets";
+import poster from "../assets/poster.png";
+
+const releaseTimeUTC9 = "2024-06-17T14:00:00+09:00";
+---
+
+<div class="flex flex-col items-center space-y-5 lg:flex-row lg:space-x-5 lg:items-end">
+  <div class="bg-red-500 w-[19rem] flex flex-row justify-center rounded-lg">
+    <div class="col-lg-3">
+      <div class="card mt-4 mb-4 w-[18rem]">
+        <a href="/">
+          <Image src={poster} alt="poster" />
+        </a>
+        <div class="text-center">
+          <h5 class="card-title">Titulo</h5>
+          <p>Hora Local: <span id="releaseTime"></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-red-500 w-[19rem] flex flex-row justify-center rounded-lg">
+    <div class="col-lg-3">
+      <div class="card mt-4 mb-4 w-[18rem]">
+        <a href="/">
+          <Image src={poster} alt="poster" />
+        </a>
+        <div class="text-center">
+          <h5 class="card-title">Titulo</h5>
+          <p>Hora Local: 19:00 Martes 16 de Marzo</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const releaseTimeElement = document.getElementById("releaseTime");
+    if (releaseTimeElement) {
+      const releaseTimeUTC9 = new Date("2024-06-17T14:00:00+09:00");
+      const options = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+        timeZoneName: 'short'
+      };
+      const localTimeString = releaseTimeUTC9.toLocaleString(undefined, options);
+      releaseTimeElement.textContent = localTimeString;
+    } else {
+      console.error("Elemento con id 'releaseTime' no encontrado.");
+    }
+  });
+</script>
