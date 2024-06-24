@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 import poster from "../assets/poster.png";
 
-
+const detail = "/detail/";
 
 const fetchAnimes = async () => {
   const response = await fetch("http://localhost:3200/api/animes");
@@ -33,11 +33,11 @@ const animes = await fetchAnimes();
 <div class="flex flex-col items-center space-y-5 lg:flex-row lg:space-x-5 lg:items-end">
   {animes.length > 0 ? (
     animes.map((anime) => (
-      <div class="bg-red-500 w-[19rem] flex flex-row justify-center rounded-lg" key={anime._id}>
+      <div class="bg-red-500 w-[19rem] flex flex-row justify-center rounded-lg">
         <div class="col-lg-3">
           <div class="card mt-4 mb-4 w-[18rem]">
-            <a href="/">
-              <Image src={poster} alt="poster" />
+            <a href={detail + anime._id}>
+              <img src={`https://hiddentours.blob.core.windows.net/hiddenblob/${anime.blobId}`} alt="poster" />
             </a>
             <div class="text-center">
               <h5 class="card-title">{anime.title}</h5>
@@ -53,3 +53,27 @@ const animes = await fetchAnimes();
     <p>Cargando datos...</p>
   )}
 </div>
+<!-- 
+<div class="flex flex-col items-center space-y-5 lg:flex-row lg:space-x-5 lg:items-end">
+  {animes.length > 0 ? (
+    animes.map((anime) => (
+      <div class="bg-red-500 w-[19rem] flex flex-row justify-center rounded-lg" key={anime._id}>
+        <div class="col-lg-3">
+          <div class="card mt-4 mb-4 w-[18rem]">
+            <a href={detail + anime._id}>
+              <Image src={poster} alt="poster" />
+            </a>
+            <div class="text-center">
+              <h5 class="card-title">{anime.title}</h5>
+              <p>
+                Hora JP: <span>{anime.utcRelease}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))
+  ) : (
+    <p>Cargando datos...</p>
+  )}
+</div> -->
