@@ -15,9 +15,9 @@ const titleAnime = "bg-gray-600 text-white font-semibold text-center pl-2 pr-2 t
   <div class="grid justify-center">
     <div class="flex-col mt-5 p-3 space-x-3 lg:flex lg:flex-row">
         <div class="col-md-4">
-          <img src={`https://hiddentours.blob.core.windows.net/hiddenblob/${anime.blobId}`} alt="poster" class="w-[500px] img-fluid round-start">
+          <img src={`https://hiddentours.blob.core.windows.net/hiddenblob/${anime.blobId}`} alt="poster" class="w-auto h-[500px] img-fluid round-start">
         </div>
-        <div class="col-md-8">
+        <div class="pt-4 lg:p-0">
           <h1><span class={titleAnime}>{anime.title}</span></h1>
           <h2>Overview</h2>
           <p class="" >{anime.descriptionLong}</p>
