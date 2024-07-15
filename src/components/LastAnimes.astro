@@ -27,7 +27,7 @@ const fetchAnimes = async () => {
 const animes = await fetchAnimes();
 ---
 
-<div class="flex flex-col items-center space-y-5 lg:flex-row lg:space-x-5 lg:items-end overflow-hidden">
+<div class="flex flex-col items-center space-y-5 lg:flex-row lg:space-x-5 lg:items-end flex-wrap overflow-hidden">
   {animes.length > 0 ? (
     animes.map((anime) => (
       <div class="bg-red-500 w-[19rem] flex flex-row justify-center rounded-lg">
