@@ -1,0 +1,27 @@
+---
+import Navbar from '@components/NavBar.astro';
+import FeaturedPost from '@components/FeaturedPost.astro';
+import PostCard from '@components/PostCard.astro';
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+    
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <Navbar />
+    <main class="container mx-auto p-4">
+        <FeaturedPost />
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <PostCard />
+            <PostCard />
+            <PostCard />
+            <!-- Añade más <PostCard /> según sea necesario -->
+        </section>
+    </main>
+</body>
+</html>
