@@ -5,11 +5,16 @@ const fetchBlogPosts = async () => {
     throw new Error("Error al cargar los datos");
   }
   const blogPosts = await response.json();
+
+  // Sort blog posts by creation date in descending order
+  blogPosts.sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
+
   return blogPosts;
 };
 
 // Obtener los datos al cargar la página
 const blogPosts = await fetchBlogPosts();
+
 ---
 
 <article class="bg-white p-4 rounded-md shadow-md mb-8">
