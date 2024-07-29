@@ -23,7 +23,7 @@ const blogPosts = await fetchBlogPosts();
     <div>
       <img src={`https://hiddentours.blob.core.windows.net/hiddenblob/${blogPosts[0].mainImage}`} alt="Noticia destacada" class="w-full h-72 lg:h-[33rem] mb-4 rounded bg-cover">
       <p class="text-gray-700 mb-4">{blogPosts[0].title}</p>
-      <a href={`/blogdetail/${blogPosts[0]._id}`} class="text-blue-500 hover:underline">Leer más</a>
+      <a href={`/postdetail/${blogPosts[0]._id}`} class="text-blue-500 hover:underline">Leer más</a>
     </div>
   ) : (
     <p>Cargando...</p>
