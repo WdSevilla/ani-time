@@ -17,11 +17,11 @@ const blogPosts = await fetchBlogPosts();
 
 ---
 
-<article class="bg-white p-4 rounded-md shadow-md mb-8">
+<article class="bg-white p-4 rounded-md shadow-md mb-8 w-3/4">
   <h2 class="text-2xl font-bold mb-2">Noticia Destacada</h2>
   {blogPosts.length > 0 ? (
     <div>
-      <img src={`https://hiddentours.blob.core.windows.net/hiddenblob/${blogPosts[0].mainImage}`} alt="Noticia destacada" class="w-3/4 h-72 lg:h-[33rem] mb-4 rounded bg-cover">
+      <img src={`https://hiddentours.blob.core.windows.net/hiddenblob/${blogPosts[0].mainImage}`} alt="Noticia destacada" class="w-full h-72 lg:h-[33rem] mb-4 rounded bg-cover">
       <p class="text-gray-700 mb-4">{blogPosts[0].title}</p>
       <a href={`/postdetail/${blogPosts[0]._id}`} class="text-blue-500 hover:underline">Leer más</a>
     </div>
