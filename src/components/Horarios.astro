@@ -1,0 +1,60 @@
+---
+const detail = "/detail/";
+
+const fetchAnimes = async () => {
+  const response = await fetch("https://basiccrud-pw73.onrender.com/api/animes");
+  if (!response.ok) {
+    throw new Error("Error al cargar los datos");
+  }
+  const animes = await response.json();
+  
+  // Formatear la fecha y hora de cada anime manteniendo la hora en UTC+9
+  return animes.map(anime => {
+    const releaseDate = new Date(anime.release);
+    anime.utcRelease = releaseDate.toLocaleString("es-ES", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      timeZone: "UTC"
+    });
+    return anime;
+  });
+};
+
+// Obtener los datos al cargar la página
+const animes = await fetchAnimes();
+---
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4 p-3">
+    {animes.length > 0 ? (
+      animes.map((anime) => (
+        <div class="bg-red-500 rounded-lg flex flex-col justify-center" >
+          <div class="card mt-4 mb-4 w-full">
+            <a href={detail + anime._id}>
+              <img src={`https://hiddentours.blob.core.windows.net/hiddenblob/${anime.blobId}`} alt="poster" class="w-full h-auto" />
+            </a>
+            <div class="text-center p-2">
+              <h5 class="card-title">{anime.title}</h5>
+              <p>Hora JP: <span>{anime.utcRelease}</span></p>
+            </div>
+          </div>
+        </div>
+      ))
+    ) : (
+      <p>Cargando datos...</p>
+    )}
+  </div>
+</body>
+</html>
